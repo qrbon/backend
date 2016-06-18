@@ -5,7 +5,7 @@ class Qrbon extends CI_Controller {
         $this->load->helper("db_functions");
         $db_functions = new db_functions();
 
-	$data = $this->input->post('json');
+	$data = $this->input->post();
 	var_dump($data);
 	$data = json_decode($data);
 	$date = $data->date;
