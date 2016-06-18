@@ -18,7 +18,6 @@ class Qrbon extends CI_Controller
 		else {
 		
 			foreach($data->items as $item) {
-
 				$name = $item->name;
 				$price = $item->price;
 				$amount = $item->amount;
@@ -30,7 +29,9 @@ class Qrbon extends CI_Controller
 		
 		}
 	}
-	public function anzeigen($id) {
+
+	public function anzeigen($id)
+	{
 		$this->load->helper("db_functions");
 		$db_functions = new db_functions();
 		
