@@ -1,2 +1,2 @@
-create table purchase(id serial primary key, date timestamp without time zone, store varchar(255));
-create table items(id serial primary key, p_id serial references purchase(id), name varchar(255), price int, amount int, ean varchar(13), tax int);
+create table purchase(id uuid primary key, date timestamp without time zone, store varchar(255));
+create table items(id serial primary key, p_id uuid references purchase(id), name varchar(255), price int, amount int, ean varchar(13), tax int);

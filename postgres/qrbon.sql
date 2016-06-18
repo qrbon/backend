@@ -35,7 +35,7 @@ SET default_with_oids = false;
 
 CREATE TABLE items (
     id integer NOT NULL,
-    p_id integer NOT NULL,
+    p_id uuid,
     name character varying(255),
     price integer,
     amount integer,
@@ -68,32 +68,11 @@ ALTER SEQUENCE items_id_seq OWNED BY items.id;
 
 
 --
--- Name: items_p_id_seq; Type: SEQUENCE; Schema: public; Owner: qrbon
---
-
-CREATE SEQUENCE items_p_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-ALTER TABLE items_p_id_seq OWNER TO qrbon;
-
---
--- Name: items_p_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: qrbon
---
-
-ALTER SEQUENCE items_p_id_seq OWNED BY items.p_id;
-
-
---
 -- Name: purchase; Type: TABLE; Schema: public; Owner: qrbon; Tablespace: 
 --
 
 CREATE TABLE purchase (
-    id integer NOT NULL,
+    id uuid NOT NULL,
     date timestamp without time zone,
     store character varying(255)
 );
@@ -102,45 +81,10 @@ CREATE TABLE purchase (
 ALTER TABLE purchase OWNER TO qrbon;
 
 --
--- Name: purchase_id_seq; Type: SEQUENCE; Schema: public; Owner: qrbon
---
-
-CREATE SEQUENCE purchase_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-ALTER TABLE purchase_id_seq OWNER TO qrbon;
-
---
--- Name: purchase_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: qrbon
---
-
-ALTER SEQUENCE purchase_id_seq OWNED BY purchase.id;
-
-
---
 -- Name: id; Type: DEFAULT; Schema: public; Owner: qrbon
 --
 
 ALTER TABLE ONLY items ALTER COLUMN id SET DEFAULT nextval('items_id_seq'::regclass);
-
-
---
--- Name: p_id; Type: DEFAULT; Schema: public; Owner: qrbon
---
-
-ALTER TABLE ONLY items ALTER COLUMN p_id SET DEFAULT nextval('items_p_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: public; Owner: qrbon
---
-
-ALTER TABLE ONLY purchase ALTER COLUMN id SET DEFAULT nextval('purchase_id_seq'::regclass);
 
 
 --
@@ -159,25 +103,11 @@ SELECT pg_catalog.setval('items_id_seq', 1, false);
 
 
 --
--- Name: items_p_id_seq; Type: SEQUENCE SET; Schema: public; Owner: qrbon
---
-
-SELECT pg_catalog.setval('items_p_id_seq', 1, false);
-
-
---
 -- Data for Name: purchase; Type: TABLE DATA; Schema: public; Owner: qrbon
 --
 
 COPY purchase (id, date, store) FROM stdin;
 \.
-
-
---
--- Name: purchase_id_seq; Type: SEQUENCE SET; Schema: public; Owner: qrbon
---
-
-SELECT pg_catalog.setval('purchase_id_seq', 1, true);
 
 
 --
