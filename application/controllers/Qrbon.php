@@ -6,6 +6,8 @@ class Qrbon extends CI_Controller {
         var_dump($test);
     }
     public function speichern() {
+        $json = $this->input->post();
+        
         $this->load->helper("db_functions");
         $db_functions = new db_functions();
         
