@@ -37,7 +37,7 @@ class Qrbon extends CI_Controller {
         
         $einkauf = $db_functions->get_purchase($id);
         $einkauf["items"] = $db_functions->get_items($id);
-        var_dump(json_encode($einkauf));
+        echo json_encode($einkauf);
     }
 }
 
